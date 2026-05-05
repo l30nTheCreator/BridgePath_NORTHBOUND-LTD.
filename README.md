@@ -2,7 +2,7 @@
 
 A small interactive demo for the CEN Business Competition concept.
 
-## for those tryna run our site in local enviornment 
+## Run
 
 Use the virtual environment Python runtime:
 
