@@ -378,7 +378,8 @@ const viewTitles = {
   roadmap: "Personalized Roadmap",
   network: "Alumni Recommendations",
   coffee: "Coffee Chat Generator",
-  progress: "Progress Dashboard"
+  progress: "Progress Dashboard",
+  thanks: "Special Thanks"
 };
 
 const stageBoost = {

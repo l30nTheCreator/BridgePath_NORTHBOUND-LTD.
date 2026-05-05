@@ -537,6 +537,24 @@ textarea:focus {
   transform: skewY(-28deg);
 }
 
+.nav-thanks::before {
+  width: 14px;
+  height: 14px;
+  left: 5px;
+  top: 5px;
+  border: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.nav-thanks::after {
+  width: 6px;
+  height: 6px;
+  left: 9px;
+  top: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
 .sidebar-assistant {
   margin-top: auto;
   display: grid;
@@ -1040,6 +1058,96 @@ textarea:focus {
   color: var(--muted);
   font-size: 11px;
   font-weight: 800;
+}
+
+.thanks-hero {
+  min-height: 250px;
+  display: grid;
+  align-content: end;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 30px;
+  border: 1px solid rgba(203, 216, 235, 0.9);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(7, 35, 40, 0.88), rgba(17, 77, 70, 0.78)),
+    linear-gradient(135deg, #e6edf8, #e5f2ed);
+  color: white;
+  box-shadow: 0 20px 54px rgba(23, 33, 29, 0.12);
+  overflow: hidden;
+  position: relative;
+}
+
+.thanks-hero::after {
+  content: "Northbound";
+  position: absolute;
+  right: 24px;
+  top: 22px;
+  color: rgba(255, 255, 255, 0.12);
+  font-family: var(--display-font);
+  font-size: 68px;
+  font-style: italic;
+}
+
+.thanks-hero .eyebrow,
+.thanks-hero p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.thanks-hero h3 {
+  margin: 0;
+  font-family: var(--display-font);
+  font-size: 42px;
+  line-height: 1.05;
+}
+
+.thanks-hero p {
+  max-width: 690px;
+  margin: 0;
+  line-height: 1.55;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.team-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  min-height: 210px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(251, 252, 251, 0.94));
+  box-shadow: 0 16px 42px rgba(23, 33, 29, 0.07);
+}
+
+.team-avatar {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(25, 116, 92, 0.92), rgba(49, 95, 159, 0.92));
+  color: white;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.42), 0 12px 24px rgba(23, 33, 29, 0.14);
+}
+
+.team-card h4 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.team-card p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
 }
 
 .section-grid,
@@ -1670,6 +1778,7 @@ textarea {
   .section-grid,
   .progress-grid,
   .alumni-grid,
+  .team-grid,
   .summary-card,
   .readiness-summary,
   .dashboard-grid {
