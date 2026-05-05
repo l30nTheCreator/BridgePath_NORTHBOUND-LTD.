@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BridgePath AI Demo</title>
+    <link rel="stylesheet" href="static/styles.css" />
+  </head>
+  <body>
+    <div id="loginScreen" class="login-screen">
+      <div class="login-art" aria-hidden="true">
+        <div class="orbital-card main">
+          <span>AI Plan</span>
+          <strong>Week 04</strong>
+        </div>
+        <div class="orbital-card network">
+          <span>Match Score</span>
+          <strong>92</strong>
+        </div>
+        <div class="orbital-card risk">
+          <span>Risk</span>
+          <strong>Medium</strong>
+        </div>
+      </div>
+      <main class="login-panel" aria-labelledby="loginTitle">
+        <div class="brand-lockup">
+          <span class="brand-mark">NB</span>
+          <div>
+            <p class="eyebrow">Northbound Ltd.</p>
+            <h1 id="loginTitle">BridgePath AI</h1>
+          </div>
+        </div>
+        <p class="login-slogan"><em>Find your path before it's decided for you.</em></p>
+        <p class="login-subtitle">A career action platform for international underclassmen turning vague anxiety into weekly progress.</p>
+        <div class="auth-toggle" aria-label="Authentication mode">
+          <button id="showLoginButton" class="auth-tab is-active" type="button">Log in</button>
+          <button id="showSignupButton" class="auth-tab" type="button">Sign up</button>
+        </div>
+        <form id="loginForm" class="login-form auth-form">
+          <label>
+            Email
+            <input id="loginEmail" type="email" value="student@uw.edu" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input id="loginPassword" type="password" value="Bridgepath1" autocomplete="current-password" required />
+          </label>
+          <button class="primary-button" type="submit">Log in</button>
+        </form>
+        <form id="signupForm" class="login-form auth-form is-hidden">
+          <label>
+            Full Name
+            <input id="signupName" type="text" value="Demo Student" autocomplete="name" required />
+          </label>
+          <label>
+            School Email
+            <input id="signupEmail" type="email" value="student@uw.edu" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input id="signupPassword" type="password" value="Bridgepath1" autocomplete="new-password" required />
+          </label>
+          <p class="password-hint">Password needs 8+ characters with uppercase, lowercase, and a number.</p>
+          <button class="primary-button" type="submit">Create account</button>
+        </form>
+        <p id="authMessage" class="auth-message" role="status"></p>
+        <div class="login-proof-grid" aria-label="Product highlights">
+          <div><strong>AI Roadmap</strong><span>Weekly actions</span></div>
+          <div><strong>Network Copilot</strong><span>Matched alumni</span></div>
+          <div><strong>Risk Score</strong><span>Next best action</span></div>
+        </div>
+      </main>
+    </div>
+
+    <div id="appShell" class="app-shell is-hidden">
+      <aside class="sidebar">
+        <div class="brand-lockup compact">
+          <span class="brand-mark">NB</span>
+          <div>
+            <strong>BridgePath AI</strong>
+            <span>Northbound Ltd.</span>
+          </div>
+        </div>
+        <nav class="nav-list" aria-label="Main navigation">
+          <button class="nav-item is-active" data-view="dashboard"><span class="nav-icon nav-dashboard"></span>Dashboard</button>
+          <button class="nav-item" data-view="profile"><span class="nav-icon nav-profile"></span>Profile</button>
+          <button class="nav-item" data-view="roadmap"><span class="nav-icon nav-roadmap"></span>Roadmap</button>
+          <button class="nav-item" data-view="network"><span class="nav-icon nav-network"></span>Alumni</button>
+          <button class="nav-item" data-view="coffee"><span class="nav-icon nav-coffee"></span>Coffee Chat</button>
+          <button class="nav-item" data-view="progress"><span class="nav-icon nav-progress"></span>Progress</button>
+        </nav>
+        <div class="sidebar-assistant">
+          <span class="assistant-star">AI</span>
+          <strong>AI Assistant</strong>
+          <p>Ask about your weekly plan, alumni outreach, or next best action.</p>
+          <button class="primary-button sidebar-chat" data-jump="coffee" type="button">Start Chat</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Freshman and sophomore career prep</p>
+            <h2 id="viewTitle">Dashboard</h2>
+          </div>
+          <div class="topbar-actions">
+            <span id="weekBadge" class="user-badge">May 12 - May 18, 2025</span>
+            <span id="userBadge" class="user-badge">student@uw.edu</span>
+            <button id="logoutButton" class="ghost-button" type="button">Log out</button>
+          </div>
+        </header>
+
+        <section id="dashboard" class="view is-active">
+          <div id="dashboardGrid" class="dashboard-grid"></div>
+        </section>
+
+        <section id="profile" class="view">
+          <div class="section-grid">
+            <form id="profileForm" class="panel form-panel">
+              <div class="panel-header">
+                <h3>Student Profile Input</h3>
+                <p>Used to personalize actions, alumni matches, and progress targets.</p>
+              </div>
+              <div class="form-grid">
+                <label>
+                  University
+                  <select id="school"></select>
+                </label>
+                <label>
+                  Stage
+                  <select id="stage">
+                    <option>Freshman Spring</option>
+                    <option>Sophomore Fall</option>
+                    <option>Sophomore Spring</option>
+                  </select>
+                </label>
+                <label>
+                  Major
+                  <select id="major"></select>
+                </label>
+                <label>
+                  Target Industry
+                  <select id="industry"></select>
+                </label>
+                <label>
+                  Weekly Hours
+                  <input id="hours" type="number" min="2" max="25" value="8" />
+                </label>
+                <label>
+                  Student Status
+                  <select id="status">
+                    <option>F-1 International Student</option>
+                    <option>U.S. Citizen or Permanent Resident</option>
+                    <option>Other Visa Status</option>
+                  </select>
+                </label>
+              </div>
+              <button class="primary-button" type="submit">Generate Plan</button>
+            </form>
+
+            <div class="panel snapshot-panel">
+              <div class="panel-header">
+                <h3>Career Snapshot</h3>
+                <p id="snapshotText">Finance track at University of Washington, 8 hours per week.</p>
+              </div>
+              <div class="metric-row">
+                <span>Roadmap phase</span>
+                <strong id="phaseMetric">Foundation</strong>
+              </div>
+              <div class="metric-row">
+                <span>Networking target</span>
+                <strong id="networkMetric">20 alumni</strong>
+              </div>
+              <div class="metric-row">
+                <span>Next milestone</span>
+                <strong id="milestoneMetric">Resume v1</strong>
+              </div>
+              <div class="profile-insight">
+                <strong id="schoolSignalTitle">School signal</strong>
+                <p id="schoolSignalText">UW gives this plan a Seattle finance and technology networking angle.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="roadmap" class="view">
+          <div id="planSummary" class="summary-card"></div>
+          <div class="toolbar">
+            <div class="segmented-control" aria-label="Roadmap range">
+              <button class="segment is-active" data-range="week">Weekly</button>
+              <button class="segment" data-range="month">Monthly</button>
+              <button class="segment" data-range="quarter">Quarterly</button>
+            </div>
+            <button id="addTaskButton" class="ghost-button" type="button">Add Task</button>
+          </div>
+          <div id="roadmapList" class="roadmap-list"></div>
+          <div class="panel calendar-panel">
+            <div class="panel-header calendar-panel-header">
+              <div>
+                <h3>Action Calendar</h3>
+                <p>Pitch-friendly view of how weekly actions become a schedule.</p>
+              </div>
+              <div id="roadmapWeekControl"></div>
+            </div>
+            <div id="calendarGrid" class="calendar-grid"></div>
+          </div>
+        </section>
+
+        <section id="network" class="view">
+          <div class="toolbar">
+            <div>
+              <h3>Alumni Recommendations</h3>
+              <p class="subtle">Demo profiles are synthetic and filtered by school, major, and industry.</p>
+            </div>
+            <button id="refreshAlumniButton" class="ghost-button" type="button">Refresh Matches</button>
+          </div>
+          <div id="alumniGrid" class="alumni-grid"></div>
+        </section>
+
+        <section id="coffee" class="view">
+          <div class="section-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Coffee Chat Generator</h3>
+                <p>Pick an alumni match and generate outreach plus questions.</p>
+              </div>
+              <label>
+                Alumni
+                <select id="coffeePerson"></select>
+              </label>
+              <label>
+                Tone
+                <select id="coffeeTone">
+                  <option>Warm and concise</option>
+                  <option>Professional</option>
+                  <option>Curious underclassman</option>
+                  <option>Confident and direct</option>
+                </select>
+              </label>
+              <label>
+                Goal
+                <select id="coffeeGoal">
+                  <option>Learn about recruiting timeline</option>
+                  <option>Ask for resume feedback</option>
+                  <option>Explore role fit</option>
+                  <option>Build referral potential</option>
+                </select>
+              </label>
+              <label>
+                Length
+                <select id="coffeeLength">
+                  <option>Short LinkedIn note</option>
+                  <option>Medium email</option>
+                  <option>Detailed warm intro</option>
+                </select>
+              </label>
+              <button id="generateCoffeeButton" class="primary-button" type="button">Generate</button>
+            </div>
+            <div class="panel output-panel">
+              <div class="panel-header">
+                <h3>Generated Outreach</h3>
+                <p id="selectedPersonMeta">Select an alumni match to personalize the message.</p>
+              </div>
+              <textarea id="messageOutput" readonly></textarea>
+              <ol id="questionOutput" class="question-list"></ol>
+            </div>
+          </div>
+        </section>
+
+        <section id="progress" class="view">
+          <div id="readinessSummary" class="readiness-summary"></div>
+          <div class="progress-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Progress Dashboard</h3>
+                <p>Tracks readiness across resume, networking, skills, and experience.</p>
+              </div>
+              <div id="progressBars" class="progress-bars"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Skill Gap Tracker</h3>
+                <p>Shows what is still missing before internship recruiting.</p>
+              </div>
+              <div id="skillGaps" class="gap-list"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="static/app.js"></script>
+  </body>
+</html>
